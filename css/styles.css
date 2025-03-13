@@ -1,0 +1,389 @@
+/* Define olive green shades as CSS variables */
+:root {
+  --olive-dark: hsl(82, 39%, 65%);
+  --olive-medium: hsl(82, 39%, 75%);
+  --olive-light: hsl(82, 39%, 85%);
+}
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Main container */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar (Left Panel) */
+.sidebar {
+  width: 10%;
+  background-color: var(--olive-dark);
+  color: #ecf0f1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 0;
+  box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.1) inset;
+}
+
+.sidebar .logo img {
+  max-width: 80%;
+  margin-bottom: 20px;
+}
+.tools{
+	width:100%;
+}
+.sidebar .tools ul {
+  list-style: none;
+  width: 100%;
+}
+.logo{
+	text-align:center;
+}
+.sidebar .tools ul li button{
+  margin-bottom: 15px;
+  
+  border-radius:20px 0px 0px 20px;
+}
+
+.sidebar .tools ul li button {
+  background: none;
+  border: none;
+  color: black;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 14px;
+  padding-right:0px;
+}
+
+/* When hovering/active, use the next column’s background (email trays) */
+.sidebar .tools ul li button:hover,
+.sidebar .tools ul li button.active {
+  background-color: var(--olive-medium);
+}
+
+/* Main content area */
+.main-content {
+  width: 90%;
+  overflow-y: auto;
+}
+
+/* Mail View Styles */
+.mail-container {
+  display: flex;
+  height: 100%;
+}
+
+/* Column 2: Email Trays (Folders) */
+.email-trays {
+  flex: 1;
+  background-color: var(--olive-medium);
+  border-right: 0px solid #bdc3c7;
+  overflow-y: auto;
+  padding: 10px;
+  font-size: 12px;
+  padding-right: 0;
+  box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* Column 3: Email List (Emails in Tray) */
+.email-list-container {
+  flex: 2;
+  background-color: var(--olive-light);
+  border-right: 0px solid #bdc3c7;
+  overflow-y: auto;
+  padding: 10px;
+  padding-right: 0;
+  box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* Search bar above the email list */
+.search-container {
+  margin-bottom: 10px;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 0px solid #bdc3c7;
+  border-radius: 4px;
+  background:none;
+  margin-right:10px;
+}
+
+/* Column 4: Open Email Content */
+.email-content {
+  flex: 6;
+  background-color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.email-trays ul, 
+.email-list-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.email-trays ul li, 
+.email-list-container ul li {
+  padding: 10px;
+  border-bottom: 0px solid #bdc3c7;
+  cursor: pointer;
+  transition: all 1s;
+  position: relative;
+  right: 0;
+  border-radius:20px 0px 0px 20px;
+}
+
+/* For email trays: selected/hover state becomes the email list background */
+.email-trays ul li.active, 
+.email-trays ul li:hover {
+  background-color: var(--olive-light);
+  right: -10px;
+  z-index: 10000;
+}
+
+/* For email list: selected/hover state becomes the email content background */
+.email-list-container ul li.active, 
+.email-list-container ul li:hover {
+  background-color: #fff;
+  right: -10px;
+  z-index: 10000;
+}
+
+#email-list .active {
+  background: white;
+  position: relative;
+  right: -1px;
+  
+}
+
+/* Email List Item Layout */
+.email-list-container .email-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.email-list-container .email-sender {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.email-list-container .email-subject {
+  font-size: 10px;
+  text-align: justify;
+}
+
+.email-list-container .email-date {
+  font-size: 10px;
+  text-align: right;
+  color: #7f8c8d;
+}
+
+/* Email Content */
+.email-header {
+  border-bottom: 0px solid #bdc3c7;
+  margin-bottom: 20px;
+}
+
+.email-header h2 {
+  margin-bottom: 10px;
+}
+
+.email-meta span {
+  display: block;
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.email-body p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* Compose View Styles */
+.compose-container {
+  background-color: #fff;
+  padding: 20px;
+  border: 0px solid #bdc3c7;
+}
+
+.compose-container h2 {
+  margin-bottom: 20px;
+}
+
+.compose-container form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.compose-container form input,
+.compose-container form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 0px solid #bdc3c7;
+  border-radius: 4px;
+}
+
+.compose-container form button {
+  padding: 10px 20px;
+  background-color: var(--olive-dark);
+  color: #ecf0f1;
+  border: none;
+  cursor: pointer;
+}
+
+.compose-container form button:hover {
+  background-color: var(--olive-medium);
+}
+
+/* Contacts View Styles */
+.contacts-container {
+  background-color: #fff;
+  padding: 20px;
+  border: 0px solid #bdc3c7;
+}
+
+.contacts-container h2 {
+  margin-bottom: 20px;
+}
+
+.contacts-container ul {
+  list-style: none;
+}
+
+.contacts-container ul li {
+  padding: 10px;
+  border-bottom: 0px solid #bdc3c7;
+}
+
+/* Calendar View Styles */
+.calendar-container {
+  background-color: #fff;
+  padding: 20px;
+  border: 0px solid #bdc3c7;
+}
+
+.calendar-container h2 {
+  margin-bottom: 20px;
+}
+
+.calendar-container ul {
+  list-style: none;
+}
+
+.calendar-container ul li {
+  padding: 10px;
+  border-bottom: 0px solid #bdc3c7;
+}
+
+/* Settings View Styles */
+.settings-container {
+  background-color: #fff;
+  padding: 20px;
+  border: 0px solid #bdc3c7;
+}
+
+.settings-container h2 {
+  margin-bottom: 20px;
+}
+
+.settings-container form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.settings-container form input,
+.settings-container form textarea,
+.settings-container form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 0px solid #bdc3c7;
+  border-radius: 4px;
+}
+
+.settings-container form button {
+  padding: 10px 20px;
+  background-color: var(--olive-dark);
+  color: #ecf0f1;
+  border: none;
+  cursor: pointer;
+}
+
+.settings-container form button:hover {
+  background-color: var(--olive-medium);
+}
+
+/* Login Page Styles */
+.login-container {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 0px solid #bdc3c7;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-container form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-container form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 0px solid #bdc3c7;
+  border-radius: 4px;
+}
+
+.login-container form button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--olive-dark);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-container form button:hover {
+  background-color: var(--olive-medium);
+}
+
+.login-container .error {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#mail-view {
+  height: 100%;
+}
+
